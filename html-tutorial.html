@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+        <meta name="description" content="This is my first html page" />
+        <meta name="author" content="Akash" />
+        <title>First Website</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./external.css" />
+        <script></script>
+        <style>
+            body {
+                font-weight: lighter;
+                font-style: normal;
+            }
+
+            /* CSS selectors */
+
+            div {    /* tag selector(tagname) */
+                
+            }
+
+            #para {  /* id selector(#) */
+                color: blueviolet;
+            }
+
+            .textbox {   /* class selector (.)*/
+                border: 4px solid grey;
+            }
+
+            table,#para,.textbox {   /* grouping css selctors(,) */
+                border: 2px solid green;
+                padding: 5px;
+            }
+
+            form * {     /* universal selector(*) */
+                font-size: 20px;
+            }
+
+            ul[type='square'] {  /* attribute selector */
+                list-style-type:armenian;
+            }
+
+            main * {
+                background-color: white;
+                border: 3px solid blue;
+                margin: 10px;
+                padding: 10px;
+                
+            }
+
+            #level1 {
+                background-color: brown;
+            }
+
+            #level1>div {
+                background-color:chartreuse
+            }
+
+            #level2-1-2 + div {
+                background-color: darkorange;
+            }
+
+            /* decendent selector ( ) */
+            /* child selector (>) */
+
+            /* adjacent selector (+) */
+            /* sibling selector (~) */
+
+
+            
+        </style>
+    </head>
+    <body style=" font-weight: normal;">
+
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        <main>
+            <div id="level1">
+                <div id="level2.1">
+                    <div id="level2-1-1"></div>
+                    <div id="level2-1-2"></div>
+                    <div id="level2-1-3"></div>
+                    <div id="level2.1.4"></div>
+                </div>
+                <div id="level2.2">
+                    <div id="level2.2.1">
+                        <div id="level2.2.1.2"></div>
+                    </div>
+                    <div id="level2.2.2">
+                        <div id="level2.2.2.1"></div>
+                        <div id="level2.2.2.2"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <p id="para">HTML stands for HYPERTEXT MARKUP LANGUAGE</p>
+
+        <!-- basic tags -->
+        <p>Text inside Paragraph</p>
+
+        TEXT without container
+        <span>TEXT with span container</span>
+        <div>TEXT with div container</div>
+
+        <br/><hr/>
+        
+        <a href="https://www.google.com" target="" download="" >Open www.google.com</a>
+
+        <p style="text-align: center;">ewrewrrwer    r ew rew rwerewrwe       ewrewrrwer
+            ewrewrrwer
+
+            ewrewrwe
+        </p>
+        <pre>ewrewrrwer    r ew rew rwerewrwe       ewrewrrwer
+            ewrewrrwer
+
+            ewrewrwe
+        </pre>
+
+        <!-- multimedia tags -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVW6tRa_qW83fppIYIFced0ZU96MQixbuoag8FH9umQQ&s" height="30px" />
+        <audio controls>
+            <source src="https://2u039f-a.akamaihd.net/downloads/ringtones/files/mp3/7120-download-iphone-6-original-ringtone-42676.mp3" />
+        </audio>
+        <video controls>
+            <source src="https://player.vimeo.com/video/842895194?title=0&portrait=0&byline=0&autoplay=1&muted=true"/>
+        </video>
+        <embed src="https://player.vimeo.com/video/842895194?title=0&portrait=0&byline=0&autoplay=1&muted=true" />
+        
+        <iframe width="560" height="315" src="https://player.vimeo.com/video/842895194?title=0&portrait=0&byline=0&autoplay=1&muted=true" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        <!-- semantic tags -->
+        <nav>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+        </nav>
+
+        <header></header>
+        <nav></nav>
+        <main>
+            <section id="testimonials">
+                <div></div>
+                <div></div>
+            </section>
+            <section id="newsletter"></section>
+        </main>
+        <aside></aside>
+        <footer></footer>
+
+        <!-- formatting tags -->
+        <b></b><i></i>
+        <strong></strong><em></em>
+
+        <marquee direction="up"><center><mark>HTML</mark> Stands for Hypertext Markup Language</center></marquee>
+
+        2<sup>2</sup>
+        <br>
+        <sub>3</sub>root 23
+
+        <!-- list tags -->
+        <ol type="A">
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+            <li>List Item 5</li>
+        </ol>
+
+        <ul type="square">
+            <li>List Item </li>
+            <li>List Item </li>
+            <li>List Item </li>
+            <li>List Item </li>
+            <li>List Item </li>
+            <li>List Item </li>
+        </ul>
+
+        <dl>
+            <dt>HTML:</dt>
+            <dd>The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It defines the meaning and structure of web content. It is often assisted by technologies such as Cascading Style Sheets and scripting languages such as JavaScript.</dd>
+        </dl>
+
+        <!-- heading tags -->
+        <h1>Heading Level 1</h1>
+        <h2>Heading Level 2</h2>
+        <h3>Heading Level 3</h3>
+        <h4>Heading Level 4</h4>
+        <h5>Heading Level 5</h5>
+        <h6>Heading Level 6</h6>
+
+
+        <!-- table tags -->
+        <table>
+            <colgroup>
+                <col span="2" style="background-color: cyan;" />
+                <col />
+                <col style="background-color: aquamarine;" />
+                <col span="4" style="background-color: blue;" />
+                <col span="2" style="background-color: coral;" />
+            </colgroup>
+            <caption>Student List 2023</caption>
+            <tr>
+                <th colspan="2">Student Name</th>
+                <th rowspan="2">Course</th>
+                <th rowspan="2">Batch</th>
+                <th colspan="4">Assignments</th>
+                <th colspan="2">Projects</th>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Assignment 1</th>
+                <th>Assignment 2</th>
+                <th>Assignment 3</th>
+                <th>Assignment 4</th>
+                <th>Project 1</th>
+                <th>Project2</th>
+            </tr>
+            <tr>
+                <td>Akash</td>
+                <td>Soni</td>
+                <td>Web development</td>
+                <td>July 2023</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Projects</td>
+                <td>Projects</td>
+            </tr>
+            <tr>
+                <td>Abdul</td>
+                <td>Kareem</td>
+                <td>Data Science</td>
+                <td>May 2023</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Projects</td>
+                <td>Projects</td>
+            </tr>
+            <tr>
+                <td>Gaurav</td>
+                <td>Kumawat</td>
+                <td>Machine Learning</td>
+                <td>January 2023</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Assignments</td>
+                <td>Projects</td>
+                <td>Projects</td>
+            </tr>
+        </table>
+
+        <!-- form tags -->
+        <form>
+            <label></label>
+            <input />
+            <textarea></textarea>
+            <button></button>
+            <fieldset></fieldset>
+            <legend></legend>
+        </form>
+
+
+        <br><hr><br>
+        <form method="post" action="login.php">
+            <label for="uname">Username:</label>
+            <input type="text" id="uname" name="username" placeholder="Email address"/><br><br>
+            <label for="pwd">Password:</label>
+            <input type="password" id="pwd" name="passwd" placeholder="Password"/><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <br><hr><br>
+
+        <form>
+            <fieldset>
+                <legend>HTML Input Tags:</legend>
+                <!--text fields-->
+                <br><label>Text</label><input class="textbox" type="text" name="name_inp" id="name_txt" class="textbox" value="Hello" />
+                <br><label>Url</label><input class="textbox" type="url" placeholder="Enter a URL"/>
+                <br><label>Search</label><input class="textbox" type="search" />
+                <br><label>Password</label><input class="textbox" type="password" />
+                <br><label>Number</label><input class="textbox" id="number-input" type="number" />
+                <br><label>Email</label><input class="textbox" id="email-input" type="email" />
+                <textarea class="textbox" rows="10" cols="50"></textarea><br><br>
+    
+                <!-- date/time -->
+                <br><label>Date</label><input id="date-picker" type="date" name="date">
+                <br><label>DateTime-Local</label><input type="datetime-local">
+                <br><label>DateTime</label><input type="datetime" >
+                <br><label>month</label><input type="month">
+                <br><label>week</label><input type="week">
+                <br><label>time</label><input type="time">
+    
+                <!--check box-->
+                <br><label>Checkbox</label>
+                <input name="chk1" type="checkbox"><label>Option 1</label>
+                <input name="chk2" type="checkbox"><label>Option 2</label>
+    
+                <!-- radiobtn -->
+                <br><label>Radio button</label>
+                <input name="gender" type="radio" value="male"><label>Male</label>
+                <input name="gender" type="radio" value="female"><label>Female</label>
+                <input name="gender" type="radio" value="others"><label>Others</label>
+    
+                <!-- selectors -->
+                <br><label>Text</label><input type="color" name="color">
+                <br><label>Text</label><input type="file">
+                <br><label>Text</label><input type="image" src="list.png" alt="Submit" width="48" height="48">
+                <br><label>Text</label><input type="range" name="range" min="0" max="10">
+    
+                <br><label>Text</label><input type="button" value="CLICK" />
+                <br><label>Text</label><input type="submit" value="SUBMIT"/>
+                <br><label>Text</label><input type="reset" />
+    
+                <br><label>Text</label><button type="submit">LOGIN</button>
+                <br><label>Text</label><button type="menu">MENU BUTTON</button>
+            </fieldset>
+        </form>
+
+    </body>
+</html>
+
+
+text outside html
