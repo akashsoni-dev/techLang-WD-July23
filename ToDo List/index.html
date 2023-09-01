@@ -28,8 +28,8 @@
                 <span id="added-lists"></span>
             </ul>
             <div id="add-tab" class="m-5">   
-                <form>
-                    <button type="button" id="add-list" class="button is-primary is-fullwidth">
+                <form onsubmit="addNewList()">
+                    <button type="submit" id="add-list" class="button is-primary is-fullwidth">
                         <input id="new-list-input" class="input is-fullwidth" type="text" placeholder="Add List" required>
                     </button>
                 </form>
@@ -75,7 +75,99 @@
                 <button id="create-task-btn" class="button is-success is-fullwidth">Create Task</button>
             </div>
         </section>
-        <script src="external.js"></script>
+        <script>
+            /* jslint-disable no-undef */
+
+            const idb = indexedDB.open('todo-list',1);
+           
+            idb.onupgradeneeded = () => {
+                const res = idb.result;
+                res.createObjectStore('lists',{autoIncrement:true});
+            };
+
+            idb.onsuccess = () => {
+                const res = idb.result;
+                const tx = res.transaction('lists','readonly');
+                const store = tx.objectStore('lists');
+                const cursor = store.openCursor();
+                cursor.onsuccess = () => {
+                    const list = cursor.result;
+                    if(list) {
+                        document.getElementById('added-lists').innerHTML += `
+                            <li>
+                                <a id="list-name-${list.key}" class="has-text-light">
+                                    ${list.value.ListName}
+                                </a>
+                                <span id="list-delete" onclick="deleteList(${list.key})" class="icon">
+                                    <i class="fa-solid fa-trash"></i>
+                                </span>
+                                <span id="list-edit" onclick="editList(${list.key})" class="icon">
+                                    <i class="fa-solid fa-pen"></i>
+                                </span>
+                            </li>
+                        `;
+                        list.continue();
+                    }
+                }
+            }
+
+            const addNewList = () => {
+                const newList = document.getElementById('new-list-input').value;
+
+                const idb = indexedDB.open('todo-list',1);
+
+                idb.onsuccess = () => {
+                    const res = idb.result;
+                    const tx = res.transaction('lists','readwrite');
+                    const store = tx.objectStore('lists');
+                    store.put({
+                        ListName:newList
+                    });
+                };
+            };
+
+            const editList = (key) => {
+                const listName = document.getElementById(`list-name-${key}`).innerText;
+                document.getElementById(`list-name-${key}`).innerHTML = `
+                    <form id='edit-list-name'>
+                        <input type='text' id="list-new-name" />
+                    </form>
+                `;
+                document.getElementById('list-new-name').focus();
+                document.getElementById('edit-list-name').onsubmit = () => {
+                    if(document.getElementById('list-new-name').value) {
+                        newName = document.getElementById('list-new-name').value;
+                    } else {
+                        newName = listName;
+                    }
+
+                    const idb = indexedDB.open('todo-list',1);
+
+                    idb.onsuccess = () => {
+                        const res = idb.result;
+                        const tx = res.transaction('lists','readwrite');
+                        const store = tx.objectStore('lists');
+                        store.put({
+                            ListName:newName
+                        }, key);
+                    };
+                }
+            }
+
+            const deleteList = (key) => {
+                const idb = indexedDB.open('todo-list',1);
+
+                idb.onsuccess = () => {
+                    const res = idb.result;
+                    const tx = res.transaction('lists','readwrite');
+                    const store = tx.objectStore('lists');
+                    store.delete(key);
+                };
+                location.reload();
+            };
+
+            
+        </script>
         <script src="https://kit.fontawesome.com/d3a85aa66e.js" crossorigin="anonymous"></script>
     </body>
 </html>
