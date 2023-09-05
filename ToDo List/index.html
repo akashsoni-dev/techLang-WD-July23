@@ -38,16 +38,31 @@
         <section id="tasks" class="column">
             <div class="columns m-5">
                 <div class="column is-half is-offset-one-quarter">
-                    <button class="button is-primary is-fullwidth">Add a New Task</button>
+                    <button class="button is-primary is-fullwidth" onclick="openTaskEditor()">Add a New Task</button>
                 </div>
             </div>
             <div id="task-list" class="m-5">
-                
+                <div class="level m-3 p-2 has-background-grey" id="task">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p class="subtitle columns mx-2">
+                                <input type="checkbox" id="task-status-taskid" class="column" style="height: 25px; width:25px;">
+                            </p>
+                        </div>
+                        <div class="level-item has-text-left mx-5">
+                            <div>
+                                <p id="task-title-taskid" class="title">Task Title</p>
+                                <p id="task-title-taskid" class="heading">Task Note</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="level-right"></div>
+                </div>
             </div>
         </section>
         <section id="task-editor" class="column is-one-quarter">
             <div class="my-2 ml-5 mr-2">
-                <button class="delete is-large my-2"></button>
+                <button class="delete is-large my-2" onclick="closeTaskEditor()"></button>
                 <input id="task-title-input" class="input is-primary is-fullwidth p-5" type="text" placeholder="New Task"  required />
             </div>
             <div class="my-2 ml-5 mr-2">
@@ -72,7 +87,7 @@
                 <textarea class="textarea is-success" id="task-note-input" placeholder="Add a Note" required></textarea>
             </div>
             <div class="my-2 ml-5 mr-2">
-                <button id="create-task-btn" class="button is-success is-fullwidth">Create Task</button>
+                <button id="create-task-btn" class="button is-success is-fullwidth" onclick="addNewTask()">Create Task</button>
             </div>
         </section>
         <script>
@@ -166,7 +181,58 @@
                 location.reload();
             };
 
+            const openTaskEditor = () => {
+                document.getElementById("task-editor").style.display = 'flex';
+            }
+
+            const closeTaskEditor = () => {
+                document.getElementById("task-editor").style.display = 'none';
+            }
+
+            const addNewTask = () => {
+                
+                let TaskList = JSON.parse(localStorage.getItem('Tasks')) ?? [];
+
+                let id=0;
+                if(TaskList.length !=0) {
+                    TaskList.findLast((task) => {
+                        id = task.id;
+                    }) 
+                } 
+
+                const taskTitle = document.getElementById('task-title-input').value;
+                const taskDateTime = Date.now()
+                const taskNote = document.getElementById('task-note-input').value;
+                const taskReminder = document.getElementById('task-reminder-input').value;
+                const taskDueDate= document.getElementById('task-duedate-input').value;
+                const taskImportant = document.getElementById('task-important-input').checked==true;
+
+                const task = {
+                    id: id+1,
+                    Title:taskTitle,
+                    Note: taskNote,
+                    isImportant: taskImportant,
+                    DateTime: taskDateTime,
+                    DueDate: taskDueDate,
+                    Reminder: taskReminder,
+                    status: false,
+                    ListId: 1
+                }
+
+                TaskList.push(task);
+                localStorage.setItem('Tasks',JSON.stringify(TaskList));
+            }
             
+
+            const TaskList = JSON.parse(localStorage.getItem('tasks'));
+
+            if(TaskList) {
+                for (let i=TaskList.length;i>0;i--) {
+                    document.getElementById('task-list').innerHTML += `
+                        <div></div>
+                    `;
+                }
+            }
         </script>
         <script src="https://kit.fontawesome.com/d3a85aa66e.js" crossorigin="anonymous"></script>
     </body>
